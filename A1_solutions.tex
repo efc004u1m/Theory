@@ -1,0 +1,186 @@
+\documentclass[14pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.6in]{geometry}
+\usepackage[document]{ragged2e}
+\usepackage{enumitem}
+\usepackage{textcomp}
+\usepackage{lmodern}
+\usepackage{easylist}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+
+\newtcolorbox{myframe}[1][]{
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colback=white,
+  boxrule=0.8pt,
+  #1
+}
+
+% set the default code style
+\lstset{
+    frame=tb, % draw a frame at the top and bottom of the code block
+    tabsize=4, % tab space width
+    showstringspaces=false, % don't mark spaces in strings
+    numbers=left, % display line numbers on the left
+    commentstyle=\color{green}, % comment color
+    keywordstyle=\color{blue}, % keyword color
+    stringstyle=\color{red} % string color
+}
+
+\begin{document}
+\large
+EFC004U1M: Data Structures and Algorithms (IIT Jammu, Semester-II-2019-20)
+
+\begin{flushright}
+Theory Assignment 1 \\
+\vspace{1em}
+Name: \underline{\hspace{6cm}} \\
+\vspace{1em}
+Entry Number: \underline{\hspace{6cm}} \\
+\end{flushright}
+
+\RaggedRight
+There are 3 questions for a total of 5 points. \\*
+Answer in the spaces/box provided. \\*
+\noindent\rule{\textwidth}{1pt}
+
+\section{Answer the following:}
+\begin{enumerate}[label=\alph*)]
+    \item (\textonequarter\ point) \underline{State true or false:} Let $f(n) = 5n2^{n} + 3^{n}$ and $g(n) = n3^{n}.$ Then $f(n) = \mathcal{O}(g(n)).$ \\ \vspace{1em}
+    \begin{flushright}
+    (a) \underline{\hspace{2cm}True\hspace{2cm}}
+    \end{flushright}
+    
+    \item (\textonequarter\ point) \underline{State true or false:} Let $f(n) = 5n2^{n} + 3^{n}$ and $g(n) = n3^{n}.$ Then $g(n) = \mathcal{O}(f(n)).$ \\ \vspace{1em}
+    \begin{flushright}
+    (b) \underline{\hspace{2cm}False\hspace{2cm}}
+    \end{flushright}
+    
+    \item (\textonequarter\ point) Express the running time of the algorithm below in big-\mathcal{O} notation. \\
+    \fbox{\begin{minipage}{30em}
+    Algorithm1(A:array, N:int)
+    \begin{itemize}
+        \item[$-$] for $i$ = $1$ to $N$
+            \begin{itemize}
+                \item [$-$] for $j$ = $2*i$ to $N$
+                    \begin{itemize}
+                        \item [$-$] A[i] $\leftarrow$ $A[j] + 1$
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+    \end{minipage}}
+    \begin{flushright}
+    (c) \underline{\hspace{2cm}$\mathcal{O}(N^{2})$\hspace{2cm}}
+    \end{flushright}
+    
+    \item (\textonequarter\ point) \underline{Fill in the blanks:} Let $f(n) = 2n!+5*3^{n} + 4^{n} + n^7$ . Then $f(n)$ in $\Theta$ notation is \\ \vspace{1em}
+    \begin{flushright}
+    (d) \underline{\hspace{2cm}$\Theta(N!)$\hspace{2cm}}
+    \end{flushright}
+\end{enumerate}
+
+
+\section{Find the time complexity of following piece of codes in Big-\mathcal{O} notation (also give explanation):}
+\begin{enumerate}[label=\alph*)]
+    \item ($1$ point)
+    
+    \begin{lstlisting}[language=C++, title={Part (a)}]
+    void function(int n) {
+        int i = 1;
+        int s = 1;
+        int count = 0;
+        while (s <= n) {
+            i++;
+            s += i;
+            ++count;
+        }
+    }
+    \end{lstlisting}
+    
+    \begin{myframe}[width=500pt,height=250pt,top=10pt,bottom=10pt,left=10pt,right=10pt,arc=10pt,auto outer arc]
+    The value of $i$ increases by $1$ for each iteration. \\*
+    The value of $s$ after $j^{th}$ iteration of the loop, is the sum of first $j+1$ positive integers. \\*
+    If $k-1$ is the total iterations taken by the program, the while loop terminates if:
+    \[1 + 2 + \cdots + k = \frac{k(k + 1)}{2} > n\]
+    \[\implies k^2 + k - 2n > 0 \]
+    \[\implies k > \frac{-1 + \sqrt{8n}}{2} \] 
+    \begin{flushright}
+    (ignore other root, since $k > 0$)
+    \end{flushright}
+    Thus, the complexity of this program depends upon the no. of iterations of the loop, which is $\mathcal{O}(k)$, or 
+    \[ \boxed{\mathcal{O}(\sqrt{N})} \]
+    
+    \end{myframe}
+    \item ($1$ point)
+    \begin{lstlisting}[language=C++, title={Part (b)}]
+    void function(int n) {
+        int i, j, count = 0;
+        for (i = n/2; i <= n; ++i) {
+            for (j = 1; j <= n; j *= 2) {
+                ++count;
+            }
+        }
+    }
+    \end{lstlisting}
+    \begin{myframe}[width=500pt,height=280pt,top=10pt,bottom=10pt,left=10pt,right=10pt,arc=10pt,auto outer arc]
+    The outer loop runs $n - \frac{n}{2} + 1 = \frac{n}{2} + 1$ times, i.e. $\mathcal{O}(n)$ \\*
+    Let us assume that the inner loop runs for $k$ iterations.
+    At every iteration, the value of $j$ is doubled. So, at $k^{th}$ iteration, $j$ becomes: $2^{k}$. For the loop to terminate,
+    \[ 2^{k} > n\]
+    \[ \implies k > log\ n\]
+    Let $k = log\ n + c$ where $c$ is some constant, we can easily show that $k$ is $\mathcal{O}(log\ n)$.
+    Hence, the time complexity of the program is:
+    \[ \boxed{\mathcal{O}(n\ log\ n)} \]
+    \end{myframe}
+    
+    \item ($1$ point)
+    \begin{lstlisting}[language=C++, title={Part (c)}]
+    void function(int n) {
+        if (n == 1) {
+            return;
+        }
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 1; j <= n; ++j) {
+                cout << "*";
+                break;
+            }
+        }
+    }
+    \end{lstlisting}
+    \begin{myframe}[width=500pt,height=120pt,top=10pt,bottom=10pt,left=10pt,right=10pt,arc=10pt,auto outer arc]
+    The outer loop runs $\mathcal{O}(n)$ times, whereas inner loop runs $\mathcal{O}(1)$ time. \\*
+    Thus, the complexity of the program is:
+    \[ \boxed{\mathcal{O}(n)} \]
+    \end{myframe}
+\end{enumerate}
+
+\section{Answer the following question with explanation:}
+($1$ point) Which of the following 3 claims are correct:
+
+\begin{enumerate}
+    \item $(n + k)^{m} = \Theta(n^m)$ where $k$ and $m$ are constants.
+    \item $2^{n + 1} = \mathcal{O}(2^{n})$
+    \item $2^{2n + 1} = \mathcal{O}(2^{n})$
+\end{enumerate}
+
+\begin{myframe}[width=500pt,height=250pt,top=10pt,bottom=10pt,left=10pt,right=10pt,arc=10pt,auto outer arc]
+Claims $1$ and $2$ are correct. \\*
+\begin{enumerate}
+    \item To show that $(n + k)^{m}$ is $\Theta(n^{m})$ we must show that it is both $\mathcal{O}(n^m)$ and $\Omega(n^m)$.
+    \[(n + k)^{m} \leq c_{1} (n^{m}) \] 
+    We can choose $c_{1} = k^{m}$. Thus, $(n + k)^{m}$ is $\mathcal{O}(n^{m})$.
+    \[c_{2} (n^{m}) \leq (n + k)^{m} \] 
+    We can choose $c_{2} = 1$. Thus, $(n + k)^{m}$ is $\Omega(n^{m})$.
+    \item 
+    \[ 2^{n+1} = 2 \times (2^{n}) = \mathcal{O}(2^{n})\]
+    \item 
+    \[ 2^{2n+1} = 2 \times (2^{2n}) = 2 \times (4^{n})\]
+    It is \textbf{not} $\mathcal{O}(2^{n})$ as there does not exist $c$ and $n_{0}$ for which $2\times4^{n} \leq c\times2^{n}$, $\forall\ n \geq n_{0}$.
+    
+\end{enumerate}
+
+\end{myframe}
+\end{document}

@@ -1,0 +1,133 @@
+\documentclass[14pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.6in]{geometry}
+\usepackage[document]{ragged2e}
+\usepackage{enumitem}
+\usepackage{textcomp}
+\usepackage{lmodern}
+\usepackage{easylist}
+\usepackage{listings}
+\usepackage{xcolor}
+% set the default code style
+\lstset{
+    frame=tb, % draw a frame at the top and bottom of the code block
+    tabsize=4, % tab space width
+    showstringspaces=false, % don't mark spaces in strings
+    numbers=left, % display line numbers on the left
+    commentstyle=\color{green}, % comment color
+    keywordstyle=\color{blue}, % keyword color
+    stringstyle=\color{red} % string color
+}
+
+\begin{document}
+\large
+EFC004U1M: Data Structures and Algorithms (IIT Jammu, Semester-II-2019-20)
+
+\begin{flushright}
+Theory Assignment 1 \\
+\vspace{1em}
+Name: \underline{\hspace{6cm}} \\
+\vspace{1em}
+Entry Number: \underline{\hspace{6cm}} \\
+\end{flushright}
+
+\RaggedRight
+There are 3 questions for a total of 5 points. \\*
+Answer in the spaces/box provided. \\*
+\noindent\rule{\textwidth}{1pt}
+
+\section{Answer the following:}
+\begin{enumerate}[label=\alph*)]
+    \item (\textonequarter\ point) \underline{State true or false:} Let $f(n) = 5n2^{n} + 3^{n}$ and $g(n) = n3^{n}.$ Then $f(n) = O(g(n)).$ \\ \vspace{1em}
+    \begin{flushright}
+    (a) \underline{\hspace{5cm}}
+    \end{flushright}
+    
+    \item (\textonequarter\ point) \underline{State true or false:} Let $f(n) = 5n2^{n} + 3^{n}$ and $g(n) = n3^{n}.$ Then $g(n) = O(f(n)).$ \\ \vspace{1em}
+    \begin{flushright}
+    (b) \underline{\hspace{5cm}}
+    \end{flushright}
+    
+    \item (\textonequarter\ point) Express the running time of the algorithm below in big-O notation. \\
+    \fbox{\begin{minipage}{30em}
+    Algorithm1(A:array, N:int)
+    \begin{itemize}
+        \item[$-$] for $i$ = $1$ to $N$
+            \begin{itemize}
+                \item [$-$] for $j$ = $2*i$ to $N$
+                    \begin{itemize}
+                        \item [$-$] A[i] $\leftarrow$ $A[j] + 1$
+                    \end{itemize}
+            \end{itemize}
+    \end{itemize}
+    \end{minipage}}
+    \begin{flushright}
+    (c) \underline{\hspace{6cm}}
+    \end{flushright}
+    
+    \item (\textonequarter\ point) \underline{Fill in the blanks:} Let $f(n) = 2n!+5*3^{n} + 4^{n} + n^7$ . Then $f(n)$ in $\theta$ notation is \\ \vspace{1em}
+    \begin{flushright}
+    (d) \underline{\hspace{5cm}}
+    \end{flushright}
+\end{enumerate}
+
+
+\section{Find the time complexity of following piece of codes in Big-O notation (also give explanation):}
+\begin{enumerate}[label=\alph*)]
+    \item ($1$ point)
+    
+    \begin{lstlisting}[language=C++, title={Part (a)}]
+    void function(int n) {
+        int i = 1;
+        int s = 1;
+        int count = 0;
+        while (s <= n) {
+            i++;
+            s += i;
+            ++count;
+        }
+    }
+    \end{lstlisting}
+    \framebox(500,250){}
+    
+    \item ($1$ point)
+    \begin{lstlisting}[language=C++, title={Part (b)}]
+    void function(int n) {
+        int i, j, count = 0;
+        for (i = n/2; i <= n; ++i) {
+            for (j = 1; j <= n; j *= 2) {
+                ++count;
+            }
+        }
+    }
+    \end{lstlisting}
+    \framebox(500,280){}
+    
+    \item ($1$ point)
+    \begin{lstlisting}[language=C++, title={Part (c)}]
+    void function(int n) {
+        if (n == 1) {
+            return;
+        }
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 1; j <= n; ++j) {
+                cout << "*";
+                break;
+            }
+        }
+    }
+    \end{lstlisting}
+    \framebox(500,120){}
+\end{enumerate}
+
+\section{Answer the following question with explanation:}
+($1$ point) Which of the following 3 claims are correct:
+
+\begin{enumerate}
+    \item $(n + k)^{m} = \theta(n^m)$ where $k$ and $m$ are constants.
+    \item $2^{n + 1} = O(2^{n})$
+    \item $2^{2n + 1} = O(2^{n})$
+\end{enumerate}
+
+\framebox(500,250){}
+\end{document}
