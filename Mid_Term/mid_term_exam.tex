@@ -1,0 +1,316 @@
+\documentclass[14pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.6in]{geometry}
+\usepackage[document]{ragged2e}
+\usepackage{enumitem}
+\usepackage{textcomp}
+\usepackage{lmodern}
+\usepackage{easylist}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{setspace}
+\setstretch{1.25}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[]{}
+\fancyfoot[L]{Entry No: }
+
+% set the default code style
+\lstset{
+    frame=tb, % draw a frame at the top and bottom of the code block
+    tabsize=4, % tab space width
+    showstringspaces=false, % don't mark spaces in strings
+    numbers=left, % display line numbers on the left
+    commentstyle=\color{green}, % comment color
+    keywordstyle=\color{blue}, % keyword color
+    stringstyle=\color{red} % string color
+}
+\newtcolorbox{myframe}[1][]{
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colback=white,
+  boxrule=0.8pt,
+  #1
+}
+
+\begin{document}
+\large
+EFC004U1M: Data Structures and Algorithms (IIT Jammu, Semester-II-2019-20)
+
+\begin{flushright}
+Mid Term Examination\\
+\vspace{1em}
+Name: \underline{\hspace{6cm}} \\
+\vspace{1em}
+Entry Number: \underline{\hspace{6cm}} \\
+\end{flushright}
+
+\RaggedRight
+
+There are 5 questions for a total of 16 points. 
+\hfill Maximum Score: 15 points \\*
+Answer in the spaces/box provided. \\* Write your \textbf{Entry No.} at bottom left on each page.
+\hfill Maximum Time: 2 hours
+\noindent\rule{\textwidth}{1pt}
+
+\section{State True or False:}
+\begin{enumerate}[label=\alph*)]
+    \item (\textonequarter\ point) A function can return any type of value in C++ regardless of the type specified in \\* declaration.
+    \hfill (a) \underline{\hspace{5cm}}
+    
+    \item (\textonequarter\ point) You are given a snippet of code declaring some variables:
+    \begin{lstlisting}[language=C++, title={Part (b)}]
+    int x = 20;
+    int y = 10;
+    int z = 4;
+    \end{lstlisting}
+    The expression \underline{$!(x + y > 8*z)$} evaluates to 
+    \hfill (b) \underline{\hspace{5cm}}
+    
+    \item (\textonequarter\ point) A pretest loop is one in which the conditional statement is checked before \\* the execution of the block of code. While loop is NOT a pretest loop.\ \hfill (c) \underline{\hspace{3cm}}
+    
+    \item (\textonequarter\ point) If a function returns no value, the return type must be declared as void. \\*
+    \hfill (d) \underline{\hspace{5cm}}
+    
+    \item (\textonequarter\ point) A pointer variable can't point to other pointer variables. \\*
+    \hfill (e) \underline{\hspace{5cm}}
+    
+    \item (\textonequarter\ point) All objects of a class share all data members, private and public, of a class. \\*
+    \hfill (f) \underline{\hspace{5cm}}
+    
+    \item (\textonequarter\ point) A pointer stores the address of the variable whereas a reference is just an alias for that variable.
+    \hfill (g) \underline{\hspace{5cm}}
+    
+    \item (\textonequarter\ point) The tightest upper bound that represents the \textbf{no. of swaps} required to sort $n$ numbers using \textbf{selection sort} is $O(n^2)$. In selection sort, we first pick the min. element and swap with the first position, then the $2^{nd}$ min is swapped with $2^{nd}$ position and so on. \\*
+    \hfill (h) \underline{\hspace{3cm}}
+\end{enumerate}
+
+\section{Fill in the blanks:}
+\begin{enumerate}[label=\alph*)]
+    \item (\textonequarter\ point) The type of 17.23 in C++ can be \underline{\hspace{10cm}}.
+    
+    \item (\textonequarter\ point) If originally $x = 1$ and $y = 0.5$, the value of $answer$ after executing the following snippet of code will be \underline{\hspace{5em}}.
+    \begin{lstlisting}[language=C++, title={Part (b)}]
+    int answer;
+    x *= 5;
+    answer = -x + (-y);
+    \end{lstlisting}
+    
+    \item (\textonequarter\ point) $int\ arr[4][3]$ is an integer array with \underline{\hspace{5cm}} bytes of memory. (int takes 32 bits of size).
+    
+    \item (\textonequarter\ point) Find the asymptotic relationship ($\mathcal{O}$/$\Omega$/$\Theta$). $n^k$ is \underline{\hspace{1cm}}($c^n$). Assume that $k >= 1$ and $c > 1$ are constants.
+    
+    \item (\textonequarter\ point) A sorting algorithm takes 1 second to sort 1,000 items on your local machine. The time it will take to sort 10,000 items if you believe that the algorithm takes time proportional to $n^2$ is $\underline{\hspace{5cm}}$.
+    
+    \item (\textonequarter\ point)
+    The following function computes the maximum value contained in an integer array $p[]$ of size $n\ (n \geq 1)$. Fill the missing loop condition.
+    \begin{lstlisting}[language=C++, title={Part (f)}]
+    int max(int *p, int n) {
+        int a = 0, b = n - 1;
+        while (______________) {
+            if (p[a] <= p[b]) {a = a + 1;}
+            else              {b = b - 1;}
+        }
+        return p[a];
+    }
+    \end{lstlisting}
+    
+\end{enumerate}
+
+\section{Find the output: (answer in the box)}
+\begin{enumerate}[label=\alph*)]
+    \item (\textonequarter\ point)
+    \begin{lstlisting}[language=C++, title={Part (a)}]
+    int ar[4] = {2, 4, 6, 8};
+    ar[0] = 27;
+    ar[3] = ar[2];
+    cout << ar[0] << " and " << ar[3] << endl;
+    \end{lstlisting}
+    \framebox(500,30){}
+    
+    \item (\textonequarter\ point)
+    \begin{lstlisting}[language=C++, title={Part (b)}]
+    class Parent {
+    public:
+        void PPrint() {
+            cout << "Parent print ";
+        }
+    };
+    class Child: public Parent {
+    public:
+        void CPrint() {
+            cout << "Child print ";
+        }
+    };
+    int main () {
+        Child c;
+        c.PPrint();
+    }
+    \end{lstlisting}
+    \framebox(500,30){}
+    
+    \item (\textonequarter\ point)
+    \begin{lstlisting}[language=C++, title={Part (c)}]
+    #include <iostream>
+    using namespace std;
+    int main () {
+        int a[4][5] = {{1, 2, 3, 4, 5},
+                      {6, 7, 8, 9, 10},
+                      {11, 12, 13, 14, 15},
+                      {16, 17, 18, 19, 20}};
+        cout << *(*(a+**a+2)+3) << endl;
+    }
+    \end{lstlisting}
+    \framebox(500,20){}
+    
+    \item (\textonequarter\ point)
+    Consider the following C++ functions: \\*
+    \noindent\begin{minipage}{.45\textwidth}
+    \begin{lstlisting}[language=C++, title={Part (d) - I}]
+    int tob(int b, int* arr) {
+        int i;
+        for (i = 0; b > 0; ++i){
+            if (b % 2) 
+                arr[i] = 1;
+            else
+                arr[i] = 0;
+            b = b/2;
+        }
+        return (i);
+    }
+    \end{lstlisting}
+    \end{minipage}\hfill
+    \begin{minipage}{.45\textwidth}
+    \begin{lstlisting}[language=C++, title={Part (d) - II}]
+    int pp(int a, int b) {
+        int arr[20];
+        int i, tot = 1, ex, len;
+        ex = a;
+        len = tob(b, arr);
+        for (i = 0; i < len; ++i) {
+            if (arr[i] == 1) {
+                tot = tot * ex;
+            }
+            ex = ex * ex;
+        }
+        return (tot);
+    }
+    \end{lstlisting}
+    \end{minipage}
+    \\* The value returned by $pp(2, 10)$ is: \\*
+    \framebox(500,20){}
+\end{enumerate}
+
+\section{Fix the bug in the following: (mention line number(s) and the fix)}
+\begin{enumerate}[label=\alph*]
+    \item (\textonequarter\ point)
+    \begin{lstlisting}[language=C++, title={Part (a)}]
+    class Quiz {
+        int score;
+    }
+    int main () {
+        Quiz mid_term;
+        cout << mid_term.score << endl;
+        return 0;
+    }
+    \end{lstlisting}
+    \framebox(500,50){}
+    
+    \item (\textonequarter\ point)
+    \begin{lstlisting}[language=C++, title={Part (b)}]
+    void mystery(int *ptra, int *ptrb) {
+        int *temp;
+        temp = ptrb;
+        ptrb = ptra;
+        ptra = temp;
+    }
+    int main () {
+        int a = 2020, b = 0, c = 4, d = 42;
+        mystery(a, b);
+        if (a < c) {
+            mystery(c, a);
+        }
+        mystery(a, d);
+        cout << a << endl;
+    }
+    \end{lstlisting}
+    \framebox(500,100){}
+    
+\end{enumerate}
+
+\section{Answer the following:}
+\begin{enumerate}[label=\alph*)]
+    \item ($2$\ points)
+    Consider the following C++ code segment. Let $T(n)$ denote the no. of times the for loop is executed by the program on input $n$. Which of the following claims are true? (Also give explanation for each).
+    \begin{lstlisting}[language=C++, title={Part (a)}]
+    int isPrime(int n) {
+        for (int i = 2; i <= sqrt(n); ++i) {
+            if (n % i == 0) {
+                return 0;
+            }
+        }
+        return 1;
+    }
+    \end{lstlisting}
+    \begin{enumerate}[label=\roman*]
+        \item $T(n) = \mathcal{O}(\sqrt{n})$
+        \item $T(n) = \Omega(\sqrt{n})$
+        \item $T(n) = \Omega(1)$
+        \item $T(n) = \mathcal{O}(n)$
+    \end{enumerate}
+    \framebox(500,300){}
+    
+    \item ($2$\ points)
+    Write a function to perform integer division without using either the $/$ or $*$ operators. Your function should take in two arguments, the numerator and the denominator. It returns the integer quotient. Assume that both inputs to the function are positive. \\*
+    
+    \framebox(500,280){}
+    \framebox(500,250){}
+    \item ($2$\ points)
+    Suppose the following algorithm is used to evaluate the polynomial \\*
+    \[p(x) = a_{n}x^{n} + a_{n-1}x^{n-1} + \cdots + a_{1}x + a_{0} \]
+    \begin{lstlisting}[language=C++, title={Part (c) - I}]
+    int p = a[0];
+    int xpower = 1;
+    for (int i = 1; i <= n; ++i) {
+        xpower = x*xpower;
+        p = p + a[i]*xpower;
+    }
+    \end{lstlisting}
+    What is the no. of multiplications done in the worst-case? Also, how many additions? \\*
+    \framebox(500,50){}
+    Now, consider the following algorithm:
+    \begin{lstlisting}[language=C++, title={Part (c) - II}]
+    int p = 0;
+    for (int i = n; i >= 0; --i) {
+        p = (p*x) + a[i];
+    }
+    \end{lstlisting}
+    Does the above algorithm evaluate the polynomial correctly for a given value of $x$ and the coefficients $a[0 \cdots n]$? How many additions and multiplications does it require? What are the time complexities of both the algorithms? \\*
+    \framebox(500,250){}
+    
+    \item ($3$\ points)
+    You are given an array $A[0 \cdots (n-1)]$, where each element of the array represents a vote in the election. Assume each vote is given as an integer representing the ID of the chosen candidate. \textbf{Write a function that determines who wins the election (the ID of the winning candidate)}. Assume the inputs to the function are the integer array and n (no. of votes), and it returns the integer ID of the winning candidate. \\*
+    Also, analyze the time complexity of your solution. \\*
+    \framebox(500,260){}
+    \framebox(500,200){}
+    Can you improve the complexity of your solution? Assume that you know sorting an array of size $n$ takes $O(n\ logn)$ time. Explain your new algorithm. (No need to write code).
+    
+    \framebox(500,200){}
+    
+    \item ($1$\ point)
+    Solve the following recurrence relation and write the exact value of $T(n).$ Show calculations. (DO NOT USE MASTER'S THEOREM).
+    \[T(n) = 2 \times T(n/2) + n^2; \ T(1) = 1 \]
+    (assume that $n$ is a power of $2$). Finally, express $T(n)$ in Big-O notation.
+    
+    \framebox(500,100){}
+    \framebox(500,220){}
+    
+    \item ($1$\ point)
+    You need to write a recurrence relation that leads to the time complexity of $\mathcal{O}(nloglogn)$. Also, write a recursive function corresponding to it. (Mention any assumptions you have made).
+    \framebox(500,400){}
+\end{enumerate}
+\end{document}
