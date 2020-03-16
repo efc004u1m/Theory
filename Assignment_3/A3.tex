@@ -1,0 +1,98 @@
+\documentclass[14pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.6in]{geometry}
+\usepackage[document]{ragged2e}
+\usepackage{enumitem}
+\usepackage{textcomp}
+\usepackage{lmodern}
+\usepackage{easylist}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+
+% set the default code style
+\lstset{
+    frame=tb, % draw a frame at the top and bottom of the code block
+    tabsize=4, % tab space width
+    showstringspaces=false, % don't mark spaces in strings
+    numbers=left, % display line numbers on the left
+    commentstyle=\color{green}, % comment color
+    keywordstyle=\color{blue}, % keyword color
+    stringstyle=\color{red} % string color
+}
+\newtcolorbox{myframe}[1][]{
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colback=white,
+  boxrule=0.8pt,
+  #1
+}
+
+\begin{document}
+\large
+EFC004U1M: Data Structures and Algorithms (IIT Jammu, Semester-II-2019-20)
+
+\begin{myframe}[width=500pt,height=40pt,top=10pt,bottom=10pt,left=10pt,right=10pt,arc=10pt,auto outer arc]
+\Large \center{Assignment 3: Queues and its Applications}
+\end{myframe}
+
+\section{[3 Points] Implementing Circular Queue}
+The circular queue is a linear data structure in which the operations are performed based on FIFO (First In First Out) principle and the last position is connected back to the first position to make a circle. \\*
+One of the benefits of the circular queue is that we can make use of the spaces in front of the queue. In a normal queue, once the queue becomes full, we cannot insert the next element even if there is a space in front of the queue. But using the circular queue, we can use the space to store new values.
+
+\begin{itemize}
+    \item Write a C++ class \textbf{CircularQueue} in file \textbf{CircularQueue.cpp} that implements the above stack with following public methods.
+    \begin{itemize}
+        \item \textbf{CircularQueue(int k)} : Constructor, set the size of the queue to \textbf{k}.
+        \item \textbf{int front()} : Get the front item from the queue. If the queue is empty, return -1.
+        \item \textbf{int rear()} : Get the last item from the queue. If the queue is empty, return -1.
+        \item \textbf{bool enqueue(int value)} : Insert an element into the circular queue. Return $true$ if the operation is successful.
+        \item \textbf{bool dequeue()} : Delete an element from the circular queue. Return $true$ if the operation is successful.
+        \item \textbf{bool isEmpty()} : Checks whether the circular queue is empty or not.
+        \item \textbf{bool isFull()} : Checks whether the circular queue is full or not.
+    \end{itemize}
+    All other methods or variables in your implementation should be \textit{private}.
+    \item \textbf{Example:}
+        \begin{itemize}
+        \item \textbf{CircularQueue myQueue(4);} // sets the size to be 4.
+        \item \textbf{myQueue.enqueue(1);} // returns true
+        \item \textbf{myQueue.enqueue(2);} // returns true
+        \item \textbf{myQueue.enqueue(3);} // returns true
+        \item \textbf{myQueue.enqueue(4);} // returns true
+        \item \textbf{myQueue.enqueue(5);} // returns false, the queue is full
+        \item \textbf{myQueue.front();} // returns 1
+        \item \textbf{myQueue.rear();} // returns 4
+        \item \textbf{myQueue.isFull();} // returns true
+        \item \textbf{myQueue.dequeue();} // returns true
+        \item \textbf{myQueue.enqueue(5);} // returns true
+        \item \textbf{myQueue.front();} // returns 1
+        \item \textbf{myQueue.rear();} // returns 5
+        \end{itemize}
+\end{itemize}
+
+
+\section{[2 Points] Solve Josephus Problem}
+
+\textbf{Using the circular queue implemented above, solve the \textit{Josephus problem} described below:}
+\begin{itemize}
+    \item A group of N children sit in a circle passing an object, say ``potato", around the circle.
+    \item The potato begins with a starting child in the circle, and the children continue passing the potato until a leader rings a bell, at which the child holding the potato must leave the game after handing the potato to the next child in the circle.
+    \item After the selected child leaves, the other children close up the circle.
+    \item This process is continued until there is only one child remaining, who is declared as the winner.
+    \item If the leader always uses the strategy of ringing the bell so that every $k^{th}$ person is removed from the circle, for some fixed value $k$, the determining the winner is known as \textit{Josephus problem}.
+\end{itemize}
+
+Consider that you are provided with N and K as describe above. Also, an array of size N containing distinct integer values from 1 to N describing the ID of the students in the circular queue.
+The first element in the array refers to the ID of student having the potato initially. It will pass it in the right direction, i.e. to second element. \\*
+Find the ID of the winner.
+\begin{itemize}
+    \item Name your file as \textbf{SolveJosephus.cpp}.
+    \item First line of input should be two space separated integers N and K.
+    \item Second line of input should be an N space separated integers denoting the student IDs in the queue.
+    \item The output should be a single integer denoting the ID of the winner.
+    \item Do not print anything else to the screen.
+\end{itemize}
+\end{document}

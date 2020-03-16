@@ -1,0 +1,89 @@
+\documentclass[14pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.6in]{geometry}
+\usepackage[document]{ragged2e}
+\usepackage{enumitem}
+\usepackage{textcomp}
+\usepackage{lmodern}
+\usepackage{easylist}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+
+% set the default code style
+\lstset{
+    frame=tb, % draw a frame at the top and bottom of the code block
+    tabsize=4, % tab space width
+    showstringspaces=false, % don't mark spaces in strings
+    numbers=left, % display line numbers on the left
+    commentstyle=\color{green}, % comment color
+    keywordstyle=\color{blue}, % keyword color
+    stringstyle=\color{red} % string color
+}
+\newtcolorbox{myframe}[1][]{
+  enhanced,
+  arc=0pt,
+  outer arc=0pt,
+  colback=white,
+  boxrule=0.8pt,
+  #1
+}
+
+\begin{document}
+\large
+EFC004U1M: Data Structures and Algorithms (IIT Jammu, Semester-II-2019-20)
+
+\begin{myframe}[width=500pt,height=40pt,top=10pt,bottom=10pt,left=10pt,right=10pt,arc=10pt,auto outer arc]
+\Large \center{Assignment 2: Stack and its Applications}
+\end{myframe}
+
+\section{[2 Points] Implementing Stack}
+In this part, you will implement a \textbf{growable stack} using arrays in C++. \\
+You start with an array of size = 1. Every time the stack gets full, you copy the data to an array of double the previous size, and the new array now represents the stack. \\*
+To do so, you will have to use a dynamic array (using pointers) and allocate memory using the \textbf{new} operator.
+
+\begin{itemize}
+    \item Write a C++ class \textbf{MyStack} in file \textbf{MyStack.cpp} that implements the above stack with following public methods.
+    \begin{itemize}
+        \item \textbf{void push(int item)} : Pushes the \textbf{item} onto the top of the stack.
+        \item \textbf{int pop()} : Removes the element at the top of the stack and returns it.
+        \item \textbf{int peek()} : Returns the top element without removing from top of the stack.
+        \item \textbf{bool empty()} : Returns $true$ is the stack is empty and $false$ otherwise.
+    \end{itemize}
+    All other methods or variables in your implementation should be \textit{private}.
+\end{itemize}
+
+\section{[3 Points] Evaluate Arithmetic Expressions}
+
+Infix and postfix notations are two different ways of writing arithmetic expressions. \\*
+Please see the URL below for more details on the two notations. \\*
+
+\url{http://www.cs.man.ac.uk/~pjj/cs2121/fix.html}
+
+
+Write a program to evaluate infix expressions \textbf{using the stack created in problem 1}. Your program should read the expression as input string and evaluate it in a single pass. \\*
+
+(\textbf{Hint}: You have to use the infix to postfix conversion algorithm and postfix evaluation algorithm using two stacks - one stack for the operands and one stack for the operators. The infix to postfix conversion algorithm is explained in the following URL: \\*
+\url{http://csis.pace.edu/~wolf/CS122/infix-postfix.htm} \\*
+The postfix evaluation algorithm is explained in the following URL: \\*
+\url{https://scriptasylum.com/tutorials/infix_postfix/algorithms/postfix-evaluation/}
+
+The infix expression can contain:
+\begin{enumerate}
+    \item Integers
+    \item `+' and `*' operators
+    \item `(' and `)' parentheses
+\end{enumerate}
+
+As usual, * operator has higher precedence than + operator. \\*
+Both * and + are left associative.
+
+\begin{itemize}
+    \item Name your file as \textbf{InfixEvaluate.cpp}.
+    \item The input to a program is a string, for e.g ``2 + 3 * (5 + 6)''
+    \item The output to a program is an integer, for e.g ``35''.
+    \item Do not print anything else to the screen.
+\end{itemize}
+\end{document}
